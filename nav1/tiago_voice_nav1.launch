@@ -1,0 +1,13 @@
+<launch>
+
+  <node name="som_recognizer" pkg="som1vn" type="som_recognizer.py">
+    <param name="som1" value="$(find som1vn)/nodes/maps/weights_cmd_6words.npy"/>
+    <param name="lab1" value="$(find som1vn)/nodes/maps/labels_cmd_6words.npy"/>
+    <param name="test" value="$(find som1vn)/nodes/test_files/test.wav"/>
+  </node>
+
+  <node name="voice_cmd_vel" pkg="som1vn" type="voice_cmd_vel.py" output="screen">
+    <remap from="cmd_vel" to="/mobile_base_controller/cmd_vel"/>
+  </node>
+
+</launch>

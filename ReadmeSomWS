@@ -1,0 +1,36 @@
+mkdir -p ~/som_voice_ws/src
+cd ~/som_voice_ws/src
+
+(source /opt/ros/kinetic/setup.bash)
+
+catkin_init_workspace
+cd ~/som_voice_ws
+catkin_make
+
+cd ~/som_voice_ws/src
+
+######################
+Option 1:
+-----------
+git clone https://github.com/egutierrezhu/som1vn
+
+Option 2:
+----------
+copy som1vn
+######################
+
+cd ~/som_voice_ws
+catkin_make
+
+Terminal 1:
+$ cd ~/tiago_public_ws
+$ source ./devel/setup.bash
+$ roslaunch tiago_2dnav_gazebo tiago_navigation.launch public_sim:=true lost:=true
+
+Another option
+(roslaunch tiago_gazebo tiago_gazebo.launch public_sim:=true robot:=titanium world:=empty)
+
+Terminal 2:
+$ cd ~/som_voice_ws/
+$ source ./devel/setup.bash
+$ roslaunch som1vn tiago_voice_nav1.launch
